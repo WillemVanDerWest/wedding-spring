@@ -1,13 +1,21 @@
 package com.example.demo.services;
 
+import com.example.demo.Repositories.RsvpuserRepository;
 import com.mailersend.sdk.MailerSend;
 import com.mailersend.sdk.MailerSendResponse;
 import com.mailersend.sdk.emails.Email;
 import com.mailersend.sdk.exceptions.MailerSendException;
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MailService {
+
+    @Value("@{MAIL_TOKEN}")
+    private String mailToken;
 
     public String sendMail(String mail, String name){
 
@@ -30,7 +38,7 @@ public class MailService {
 
         MailerSend ms = new MailerSend();
 
-        ms.setToken("mlsn.0ac18c3bb7d0d913dcdbeaa3274af928c4c7542175465291aa99ec5fe0af0830");
+        ms.setToken(mailToken);
 
         try {
             MailerSendResponse response = ms.emails().send(email);
