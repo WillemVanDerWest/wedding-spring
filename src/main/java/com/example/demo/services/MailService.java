@@ -5,6 +5,7 @@ import com.mailersend.sdk.MailerSend;
 import com.mailersend.sdk.MailerSendResponse;
 import com.mailersend.sdk.emails.Email;
 import com.mailersend.sdk.exceptions.MailerSendException;
+import io.github.cdimascio.dotenv.Dotenv;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,8 +15,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class MailService {
 
-    @Value("@{MAIL_TOKEN}")
-    private String mailToken;
+    private static final Dotenv dotenv = Dotenv.load();
+
+    String mailToken = dotenv.get("MAIL_TOKEN");
 
     public String sendMail(String mail, String name){
 
