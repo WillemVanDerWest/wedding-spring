@@ -15,9 +15,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class MailService {
 
-    private static final Dotenv dotenv = Dotenv.load();
-
-    String mailToken = dotenv.get("MAIL_TOKEN");
+    @Value("${MAIL_TOKEN}")
+    private String mailToken;
 
     public String sendMail(String mail, String name){
 
