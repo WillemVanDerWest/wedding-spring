@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class MailService {
 
-    @Value("${MAIL_TOKEN}")
-    private String mailToken;
+//    @Value("${MAIL_TOKEN}")
+//    private String mailToken;
 
     public String sendMail(String mail, String name){
 
@@ -39,7 +39,7 @@ public class MailService {
 
         MailerSend ms = new MailerSend();
 
-        ms.setToken(mailToken);
+        ms.setToken("mlsn.0ac18c3bb7d0d913dcdbeaa3274af928c4c7542175465291aa99ec5fe0af0830");
 
         try {
             MailerSendResponse response = ms.emails().send(email);

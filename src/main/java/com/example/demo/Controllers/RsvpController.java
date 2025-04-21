@@ -4,6 +4,7 @@ import com.example.demo.Entities.RsvpUser;
 import com.example.demo.Repositories.RsvpuserRepository;
 import com.example.demo.services.MailService;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,11 +16,14 @@ import java.util.Optional;
 @RestController
 public class RsvpController {
 
-    private final RsvpuserRepository rsvpuserRepository;
+
 
     @Getter
     private final MailService mailService;
 
+    private final RsvpuserRepository rsvpuserRepository;
+
+    @Autowired
     public RsvpController(RsvpuserRepository rsvpuserRepository, MailService mailService){
         this.rsvpuserRepository = rsvpuserRepository;
         this.mailService = mailService;
