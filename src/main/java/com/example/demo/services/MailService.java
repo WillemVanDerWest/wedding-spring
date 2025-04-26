@@ -34,16 +34,17 @@ public class MailService {
         Email email = new Email();
 
         email.setFrom("Cabous & Jeanine", "cabous@test-pzkmgq7omk2l059v.mlsender.net");
-        //        email.addRecipient(name, mail);
+        email.addRecipient(name, mail);
         //
         //        uncommment in prod --->> email.addRecipient(name, mail); <<----
         //
         //
-        email.addRecipient("Willem", "willem04011999@gmail.com");
-        email.setSubject("Cabous & Jeanine RSVP Notification");
+        //        email.addRecipient("Willem", "willem04011999@gmail.com");
+        //        for prod
+        email.setSubject("Cabous & Jeanine RSVP Successful");
 
         email.setPlain("Baie dankie dat julle ons webwerf gebruik het om te RSVP");
-        email.setHtml("<p>This is the HTML content</p>");
+        email.setHtml("<p>Baie dankie dat julle ons webwerf gebruik het om te RSVP. Hierdie e-pos is om te bevestig dat ons jou RSVP onvang het. As jy enige vra het. Asseblief kontak ons op 076 018 6629 </p>");
 
         MailerSend ms = new MailerSend();
 
