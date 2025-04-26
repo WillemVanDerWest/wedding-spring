@@ -59,7 +59,7 @@ public class RsvpController {
             }
         }
         rsvpuserRepository.save(newUser);
-        //mailService.sendMail(newUser.getEmail(),newUser.getName());
+        mailService.sendMail(newUser.getEmail(),newUser.getName());
         return "Check your mailbox";
     }
 

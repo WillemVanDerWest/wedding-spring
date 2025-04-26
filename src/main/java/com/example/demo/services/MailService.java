@@ -15,15 +15,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class MailService {
 
-//    @Value("${MAIL_TOKEN}")
-//    private String mailToken;
+
+
+    @Value("${MAIL_TOKEN}")
+    String mailToken;
 
     public String sendMail(String mail, String name){
-
-        Email email = new Email();
-
-        email.setFrom("Cabous & Jeanine", "cabous@test-pzkmgq7omk2l059v.mlsender.net");
-        email.addRecipient(name, mail);
 
         // you can also add multiple recipients by calling addRecipient again
         // email.addRecipient("WilliamReceiver", "wbence1@gmail.com");
@@ -32,6 +29,17 @@ public class MailService {
         // Recipient recipient = new Recipient("name", "your@recipient3.com");
         // email.AddRecipient(recipient);
 
+
+
+        Email email = new Email();
+
+        email.setFrom("Cabous & Jeanine", "cabous@test-pzkmgq7omk2l059v.mlsender.net");
+        //        email.addRecipient(name, mail);
+        //
+        //        uncommment in prod --->> email.addRecipient(name, mail); <<----
+        //
+        //
+        email.addRecipient("Willem", "willem04011999@gmail.com");
         email.setSubject("Cabous & Jeanine RSVP Notification");
 
         email.setPlain("Baie dankie dat julle ons webwerf gebruik het om te RSVP");
@@ -39,7 +47,7 @@ public class MailService {
 
         MailerSend ms = new MailerSend();
 
-        ms.setToken("mlsn.0ac18c3bb7d0d913dcdbeaa3274af928c4c7542175465291aa99ec5fe0af0830");
+        ms.setToken(mailToken);
 
         try {
             MailerSendResponse response = ms.emails().send(email);
