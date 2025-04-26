@@ -12,11 +12,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = {"http://localhost:3000"})
+
 @RestController
 public class RsvpController {
-
-
 
     @Getter
     private final MailService mailService;
@@ -62,7 +60,7 @@ public class RsvpController {
         }
         rsvpuserRepository.save(newUser);
         //mailService.sendMail(newUser.getEmail(),newUser.getName());
-        return "just posted user";
+        return "Check your mailbox";
     }
 
     @GetMapping("/getUser")
