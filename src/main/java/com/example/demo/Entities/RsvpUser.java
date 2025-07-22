@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.util.Date;
 @Entity
+@Data
 @Table(name = "rsvp_users")
 public class RsvpUser {
     @Id
